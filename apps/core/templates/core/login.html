@@ -1,0 +1,30 @@
+{% extends  'core/base.html' %}
+
+<style>
+    body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #7abecc !important;
+		}
+</style>
+
+{% block  content %}
+    <div class="container has-text-centered">
+        <h1 class="title">Login</h1>
+
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+            <button class="button is-primary mt-6" type="submit">Login</button>
+           
+        
+        </form>
+         <a href="{% url 'reset_password' %}" class="btn btn-link ">Forgot your password?</a>
+    
+    </div>
+{% endblock  %} 
+

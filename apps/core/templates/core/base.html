@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UFA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+   
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link   rel="stylesheet" href="{% static 'styles/main.css'%}">
+  </head>
+  <body>
+  <nav class="navbar" roe="navigatio" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">UFC</a>
+        </div>
+
+        <div class="navbar-menu">
+          
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="button is-light"><strong>Dashboard</strong></a>
+                      
+                      <a href="{% url 'logout' %}" class="button is-danger"><strong>Logout</strong></a>
+                    {% else %}
+                        <a href="{% url 'signup' %}" class="button is-primary"><strong>Sing up</strong></a>
+                        <a href="{% url 'login' %}" class="button is-light"><strong>Login</strong></a>
+                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+  </nav>
+  <section class="section">
+     {% block content %}
+
+
+     {% endblock %}
+    
+  </section>
+
+  <footer class="footer">
+    <div class="content  has-text-centered">
+        <p><strong>Ayad Ossaile</strong> Developer fullStack</p>
+        <p><strong>Conacte:</strong>+7 981-968-4318</p>
+    </div>
+
+  </footer>
+  </body>
+</html>
